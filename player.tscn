@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dljyv8mhhcfjv"]
+
+[ext_resource type="Texture2D" uid="uid://c56pbh8mr2n87" path="res://assets/demo_sprites.png" id="1_50o0r"]
+[ext_resource type="Script" path="res://scripts/AStar_player.gd" id="1_w647n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e25hx"]
+atlas = ExtResource("1_50o0r")
+region = Rect2(15.9999, 31.7024, 16.2157, 16.4859)
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_w647n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_e25hx")
