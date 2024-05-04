@@ -4,6 +4,13 @@
 #include <godot_cpp/classes/sprite2d.hpp>
 
 namespace godot {
+    private:
+    double time_passed;
+    double amplitude;
+
+    public:
+    void set_amplitude(const double p_amplitude);
+    double get_amplitude() const;
 
     class GDExample : public Sprite2D {
         GDCLASS(GDExample, Sprite2D)
