@@ -6,7 +6,7 @@ var target_position: Vector2
 var is_moving: bool
 
 @export var tile_map : TileMap
-@onready var sprite_2d = $Sprite2D as Sprite2D
+@onready var animated_sprite_2d = $AnimatedSprite2D as AnimatedSprite2D
 
 func _ready():
 	astar_grid = AStarGrid2D.new()
