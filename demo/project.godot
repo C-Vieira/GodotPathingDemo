@@ -23,6 +23,10 @@ window/size/window_width_override=1024
 window/size/window_height_override=768
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="PathingDemo"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
