@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c35xnofbp38hm"]
+[gd_scene load_steps=8 format=3 uid="uid://c35xnofbp38hm"]
 
 [ext_resource type="Texture2D" uid="uid://curog2st3f3rq" path="res://assets/guy-Idle.png" id="1_b0jsq"]
-[ext_resource type="Script" path="res://scripts/AStar_player.gd" id="1_pk8k5"]
+[ext_resource type="Script" path="res://components/astar_pathfinder.gd" id="2_bvlup"]
+[ext_resource type="Script" path="res://components/astar_path_visualizer.gd" id="3_0e6d5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ib1pu"]
 atlas = ExtResource("1_b0jsq")
@@ -33,10 +34,15 @@ animations = [{
 }]
 
 [node name="Player" type="Node2D"]
-script = ExtResource("1_pk8k5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0i5wv")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.361651
+
+[node name="AStarPathFinder" type="Node2D" parent="."]
+script = ExtResource("2_bvlup")
+
+[node name="AStarPathVisualizer" type="Node" parent="."]
+script = ExtResource("3_0e6d5")

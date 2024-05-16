@@ -1,3 +1,4 @@
+class_name AStarPathFinder
 extends Node2D
 
 var astar_grid: AStarGrid2D
@@ -6,7 +7,7 @@ var target_position: Vector2
 var is_moving: bool
 
 @export var tile_map : TileMap
-@onready var animated_sprite_2d = $AnimatedSprite2D as AnimatedSprite2D
+@export var actor : Node2D
 
 func _ready():
 	astar_grid = AStarGrid2D.new()
@@ -45,13 +46,11 @@ func _input(event):
 			tile_map.local_to_map(target_position),
 			tile_map.local_to_map(get_global_mouse_position())
 		)
-		draw_path(id_path)
 	else:
 		id_path = astar_grid.get_id_path(
 			tile_map.local_to_map(global_position),
 			tile_map.local_to_map(get_global_mouse_position())
 		).slice(1)
-		draw_path(id_path)
 	
 	if id_path.is_empty() == false:
 		current_id_path = id_path
@@ -64,16 +63,12 @@ func _physics_process(delta):
 		target_position = tile_map.map_to_local(current_id_path.front())
 		is_moving = true
 	
-	global_position = global_position.move_toward(target_position, 1)
+	actor.global_position = actor.global_position.move_toward(target_position, 1)
 	
-	if global_position == target_position:
+	if actor.global_position == target_position:
 		current_id_path.pop_front()
 		
 		if current_id_path.is_empty() == false:
 			target_position = tile_map.map_to_local(current_id_path.front())
 		else:
 			is_moving = false
-
-func draw_path(id_path):
-	for i in id_path:
-			tile_map.set_cell(0, i, 0, Vector2i(2, 1))
